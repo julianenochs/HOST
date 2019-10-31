@@ -4,7 +4,6 @@ import CocktailSearch from '../../Containers/CocktailSearch/CocktailSearch';
 import { connect } from 'react-redux';
 
 const CocktailContainer = (props) => {
-  console.log('props', props)
   return (<div className='cocktail__container'>
   {props.cocktailsByName.map((cocktail, i) => {
     return <div>

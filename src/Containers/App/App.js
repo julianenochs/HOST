@@ -6,12 +6,14 @@ import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import CocktailContainer from '../../Components/CocktailContainer/CocktailContainer';
 import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
-
+import DrinkList from '../../Components/DrinkList/DrinkList';
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      parties: [{name: ''}]
+      parties: [{name: ''}],
+      isDrinkSelected: false,
+      currentCocktail: null
     }
   }
 
@@ -25,6 +27,7 @@ export class App extends Component {
 
   viewCocktail = cocktail => {
     console.log(cocktail)
+    this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
     return <Redirect to={`/${cocktail.strDrink}`}/>
   }
 
@@ -35,13 +38,15 @@ export class App extends Component {
         <section className='main__section'>
           <Menu />
             <BrowserRouter>
-              <Route
+              {!this.state.isDrinkSelected ? <Route
                 path='/'
                 render={props => (
                   <CocktailContainer {...props}
                     viewCocktail={this.viewCocktail}/>
                   )}>
-              </Route>
+              </Route> : ''}
+              {this.state.isDrinkSelected ? 
+                <DrinkList {...props} /> : ''}
               <Route
                 path='/parties'
                 render={props => (

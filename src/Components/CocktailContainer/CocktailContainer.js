@@ -9,7 +9,7 @@ const CocktailContainer = (props) => {
     return <div>
       <ul key={i}>{cocktail.strDrink}</ul>
       <img className='cocktail__img'src={`${cocktail.strDrinkThumb}`}></img>
-      <button onClick={() => props.viewCocktail(cocktail)}>View Cocktail</button>
+      <button onClick={() => props.setCurrentCocktail(cocktail)}> View Cocktail </button>
       </div>
   })}
     <CocktailSearch />

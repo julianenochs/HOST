@@ -17,10 +17,12 @@ export class App extends Component {
     }
   }
 
-  viewCocktail = cocktail => {
-    console.log(cocktail)
+  setCurrentCocktail = cocktail => {
     this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
-    return <Redirect to={`/${cocktail.strDrink}`}/>
+  }
+
+  viewCocktail = () => {
+    return this.state.currentCocktail
   }
 
   render() {
@@ -34,11 +36,15 @@ export class App extends Component {
                 path='/'
                 render={props => (
                   <CocktailContainer {...props}
-                    viewCocktail={this.viewCocktail}/>
+                    setCurrentCocktail={this.setCurrentCocktail}/>
                   )}>
               </Route> : ''}
               {this.state.isDrinkSelected ? 
-                <DrinkList /> : ''}
+                <Route
+                  path='/'
+                  render={props => (
+                    <DrinkList {...props} viewCocktail={this.viewCocktail()}/>
+                  )}></Route> : ''}
               <Route
                 path='/parties'
                 render={props => (
@@ -53,7 +59,8 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  parties: state.parties
+  parties: state.parties,
+  currentCocktail: state.currentCocktail
 })
 
 export default connect(mapStateToProps)(App);

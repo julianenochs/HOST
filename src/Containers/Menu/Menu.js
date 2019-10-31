@@ -11,8 +11,7 @@ export class Menu extends Component {
       partyName: '',
       isInputVisible: false,
       hasParties: false,
-      id: 0,
-      selectedParty: {}
+      selectedPartyId: null
     }
   }
 
@@ -29,8 +28,9 @@ export class Menu extends Component {
     this.setState({ partyName: '', isInputVisible: false, hasParties: true })
   }
 
-  selectParty = (partyId) => {
-    this.setState({ selectedParty: partyId})
+  setCurrentParty = (partyId) => {
+    this.setState({ selectedPartyId: partyId })
+    console.log('this.state', this.state)
   }
 
   render() {
@@ -38,9 +38,12 @@ export class Menu extends Component {
       <aside className='menu__section'>
         <section className='menu__contents'>
           <button onClick={this.showAddPartyInput} className='add-party__button'> Add A Party </button>
-          {this.state.isInputVisible ? <div> <input type='text' name='partyName' value={this.state.partyName} onChange={this.handleChange}/> <button onClick={this.handleAddParty}> + </button> </div>: ''}
+          {this.state.isInputVisible ? 
+          <div> <input type='text' name='partyName' value={this.state.partyName} onChange={this.handleChange}/> 
+          <button onClick={this.handleAddParty}> + </button> 
+          </div>: ''}
           {this.state.hasParties ? <h2 className='parties__header'>Your Parties</h2> : ''}
-          {this.state.hasParties ? <PartyList key={Date.now()} selectParty={this.selectParty}/> : ''}
+          {this.state.hasParties ? <PartyList setCurrentParty={this.setCurrentParty} key={Date.now()} /> : ''}
         </section>
       </aside>
     )
@@ -52,7 +55,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  parties: state.parties
+  parties: state.parties,
+  currentParty: state.currentParty
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

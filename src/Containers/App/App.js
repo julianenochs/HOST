@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Menu from '../../Containers/Menu/Menu';
 import Header from '../../Components/Header/Header';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import CocktailContainer from '../../Components/CocktailContainer/CocktailContainer';
 import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
@@ -20,7 +20,12 @@ export class App extends Component {
   }
 
   setPartyName = (party) => {
-    this.state.parties.push({name: [party]})
+    // this.state.parties.push({name: [party]})
+  }
+
+  viewCocktail = cocktail => {
+    console.log(cocktail)
+    return <Redirect to={`/${cocktail.strDrink}`}/>
   }
 
   render() {
@@ -33,7 +38,8 @@ export class App extends Component {
               <Route
                 path='/'
                 render={props => (
-                  <CocktailContainer />
+                  <CocktailContainer {...props}
+                    viewCocktail={this.viewCocktail}/>
                   )}>
               </Route>
               <Route
@@ -47,7 +53,6 @@ export class App extends Component {
       </div>
   );
 }
-
 }
 
 const mapStateToProps = state => ({

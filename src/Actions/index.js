@@ -3,7 +3,7 @@ export const addParty = partyName => ({
   partyName
 });
 
-export const searchCocktailByName = cocktailName => ({
-  type: 'SEARCH_COCKTAIL_BY_NAME',
-  cocktailName
+export const cocktailsByName = cocktailNames => ({
+  type: 'COCKTAILS_BY_NAME',
+  cocktailNames
 });

@@ -4,6 +4,6 @@ export const searchCocktailsByName = async (cocktailName) => {
     throw Error('failed to get cocktail by name')
   } else {
     let cocktailsByName = await response.json()
-    console.log('cocktailsByName', cocktailsByName)
+    return cocktailsByName.drinks
   }
 }

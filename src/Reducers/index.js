@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
 import { addParty } from './addParty';
-
-export const rootReducer = combineReducers({ parties: addParty })
+import { cocktailsByName } from './searchCocktailByName';
+export const rootReducer = combineReducers({ parties: addParty, cocktailsByName: cocktailsByName })

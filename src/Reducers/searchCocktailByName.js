@@ -1,7 +1,7 @@
-export const searchCocktailByName = (state = '', action) => {
+export const cocktailsByName = (state = [], action) => {
   switch (action.type) {
-    case 'SEARCH_COCKTAIL_BY_NAME' :
-      return [...state, {cocktail: action.cocktailName}]
+    case 'COCKTAILS_BY_NAME' :
+      return [...state, ...action.cocktailNames]
     default :
       return state;
   }

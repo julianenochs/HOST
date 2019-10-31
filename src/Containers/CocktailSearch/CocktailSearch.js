@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { searchCocktailByName } from '../../Actions/index';
+import { searchCocktailsByName } from '../../apiCalls';
+import { cocktailsByName } from '../../Actions/index';
+import { connect } from 'react-redux';
 
 export class CocktailSearch extends Component {
   constructor() {
@@ -8,17 +10,17 @@ export class CocktailSearch extends Component {
       selectedCocktail: ''
     }
   }
-
-  componentDidMount() {
-    searchCocktailByName()
-  }
-
+  
   handleChange = (e) => {
     this.setState({ selectedCocktail: [e.target.value] })
   }
-
+  
   handleSearch = () => {
-    
+    let cocktailQuery = this.state.selectedCocktail
+    searchCocktailsByName(cocktailQuery)
+      .then(data => {
+        this.props.cocktailsByName(data)
+      })
   }
 
   render(){
@@ -31,10 +33,18 @@ export class CocktailSearch extends Component {
           value={this.state.selectedCocktail}
           onChange={this.handleChange}
           />
-          <button onClick={this.handleSearch}>Search</button>
+          <button onClick={this.handleSearch}> Search </button>
         </section>
     )
   }
 }
 
-export default CocktailSearch;
+const mapDispatchToProps = dispatch => ({
+  cocktailsByName: (cocktailNames) => dispatch(cocktailsByName(cocktailNames))
+});
+
+const mapStateToProps = state => ({
+  cocktailsByName: state.cocktailsByName
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CocktailSearch);

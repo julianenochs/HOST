@@ -7,3 +7,8 @@ export const cocktailsByName = cocktailNames => ({
   type: 'COCKTAILS_BY_NAME',
   cocktailNames
 });
+
+export const selectParty = partyId => ({
+  type: 'SELECT_PARTY',
+  partyId
+});

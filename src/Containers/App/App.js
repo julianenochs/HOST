@@ -17,14 +17,6 @@ export class App extends Component {
     }
   }
 
-  componentDidMount() {
-    
-  }
-
-  setPartyName = (party) => {
-    // this.state.parties.push({name: [party]})
-  }
-
   viewCocktail = cocktail => {
     console.log(cocktail)
     this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
@@ -46,7 +38,7 @@ export class App extends Component {
                   )}>
               </Route> : ''}
               {this.state.isDrinkSelected ? 
-                <DrinkList {...props} /> : ''}
+                <DrinkList /> : ''}
               <Route
                 path='/parties'
                 render={props => (

@@ -1,0 +1,14 @@
+.header {
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  width: 100%;
+}
+
+
+.header__text {
+  font-family: 'Federo', sans-serif;
+  font-size: 3.5em;
+  margin-left: 2%;
+}

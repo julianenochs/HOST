@@ -18,7 +18,7 @@
 
 .cocktail__element {
   align-items: center;
-  background-color: rgba(92, 92, 92, 0.85);
+  background-color: rgba(92, 92, 92, .85);
   border-radius: 5px;
   color: white;
   display: flex;
@@ -27,6 +27,9 @@
   margin: 1%;
   text-align: center;
   width: 14%;
+    &:hover {
+    background-color: rgba(92, 92, 92, 1);
+  }
 }
 
 .cocktail__img {
@@ -41,7 +44,4 @@
   font-family: 'Federo', sans-serif;
   font-size: 1em;
   margin-top: 15%;
-    &:hover {
-        text-shadow: 1px 1px 1px;
-    }
 }

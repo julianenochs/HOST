@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './DrinkList.scss';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 export class DrinkList extends Component {
   constructor() {
     super();
@@ -19,7 +20,9 @@ export class DrinkList extends Component {
           <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} />
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
-          <button>Back To Cocktails</button>
+          <Route path={`/${viewCocktail.idDrink}`}>
+            <div>Back To Cocktails</div>
+          </Route>
         </div>
       </section>
     )

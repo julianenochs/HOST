@@ -1,6 +1,6 @@
 .single-cocktail__container {
   align-items: center;
-  background-image: url('../../images/cocktail2.jpeg');display: flex;
+  background-image: url('../../images/cocktail2.jpeg');
   background-size: cover;
   display: flex;
   height: 85vh;
@@ -10,14 +10,14 @@
 
 .cocktail-card {
   align-items: center;
-  background-color: rgba(92, 92, 92, 0.85);
+  background: rgb(92,92,92);
+  background: linear-gradient(0deg, rgba(92,92,92,1) 0%, rgba(92,92,92,1) 35%, rgba(148,148,148,0.7301295518207283) 100%);display: flex;
   border-radius: 5px;
-  color: white;
-  display: flex;
   flex-direction: column;
   font-family: 'Federo', sans-serif;
-  height: 60vh;
+  height: 70vh;
   letter-spacing: 2px;
+  padding: 15px;
   width: 35%;
 }
 

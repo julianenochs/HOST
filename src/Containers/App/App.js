@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Menu from '../../Containers/Menu/Menu';
 import Header from '../../Components/Header/Header';
-import { Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import CocktailContainer from '../../Components/CocktailContainer/CocktailContainer';
 import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
@@ -34,19 +34,18 @@ export class App extends Component {
         <Header />
         <section className='main__section'>
           <Menu />
-            <BrowserRouter>
               {!this.state.isDrinkSelected ? <Route
                 path='/'
-                render={props => (
+                render={props => 
                   <CocktailContainer {...props}
                     setCurrentCocktail={this.setCurrentCocktail}/>
-                  )}>
+                  }>
               </Route> : ''}
               {this.state.isDrinkSelected ? 
                 <Route
-                  path='/'
+                  exact path='/'
                   render={props => (
-                    <DrinkList {...props} viewCocktail={this.viewCocktail()}/>
+                    <DrinkList {...props} key={this.state.currentCocktail.idDrink} viewCocktail={this.viewCocktail()}/>
                   )}></Route> : ''}
               <Route
                 path='/parties'
@@ -54,7 +53,6 @@ export class App extends Component {
                   <PartyContainer />
                   )}>
               </Route>
-            </BrowserRouter>
           </section>
       </div>
   );

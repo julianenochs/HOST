@@ -32,7 +32,16 @@ hr {
   margin-top: 20%;
   &:hover {
       text-shadow: 1px 1px 1px;
+      transform: 20px 10px;
   }
+}
+
+.add-party__button {
+  background-color: $primary-color;
+  border: none;
+  font-size: 2em;
+  height: 20px;
+  padding: 5px;
 }
 
 .input {

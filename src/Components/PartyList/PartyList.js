@@ -5,12 +5,14 @@ import './PartyList.scss';
 
 export const PartyList = (props) => {
   return props.parties.map(party => {
-      return(
+      return(<ul>
+        <img className='icon' src='https://image.flaticon.com/icons/svg/766/766044.svg'/>
         <button className='party__list'
             onClick={() => {
-          props.selectParty(party.id)
-          props.setCurrentParty(party.id)
-        }}>{party.name}</button>
+              props.selectParty(party.id)
+              props.setCurrentParty(party.id)
+            }}>{party.name}</button>
+            </ul>
       )
     })
 }

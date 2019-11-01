@@ -6,9 +6,9 @@ const CocktailContainer = (props) => {
   return (<div className='cocktail__container'>
   {props.cocktailsByName.map((cocktail, i) => {
     return <div className='cocktail__element'>
-      <ul key={i}>{cocktail.strDrink}</ul>
-      <img className='cocktail__img'src={`${cocktail.strDrinkThumb}`}></img>
-      <button onClick={() => props.setCurrentCocktail(cocktail)}> View Cocktail </button>
+        <ul className='cocktail-name' key={i}>{cocktail.strDrink}</ul>
+        <img className='cocktail__img'src={`${cocktail.strDrinkThumb}`} />
+        <button className='view-cocktail__button' onClick={() => props.setCurrentCocktail(cocktail)}> View Cocktail </button>
       </div>
   })}
     </div>)

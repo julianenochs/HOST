@@ -8,7 +8,6 @@ import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
 import DrinkList from '../../Components/DrinkList/DrinkList';
 import { selectCocktail } from '../../Actions'
-import CocktailSearch from '../../Containers/CocktailSearch/CocktailSearch';
 
 export class App extends Component {
   constructor() {
@@ -26,13 +25,13 @@ export class App extends Component {
   }
 
   viewCocktail = () => {
+    return this.state.currentCocktail
   }
 
   render() {
     return (
       <div className='App'>
         <Header />
-        {/* <CocktailSearch /> */}
         <section className='main__section'>
           <Menu />
             <BrowserRouter>

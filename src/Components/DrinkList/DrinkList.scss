@@ -1,6 +1,27 @@
 .single-cocktail__container {
+  align-items: center;
   background-image: url('../../images/cocktail2.jpeg');display: flex;
   background-size: cover;
+  display: flex;
   height: 85vh;
+  justify-content: center;
   width: 85%;
+}
+
+.cocktail-card {
+  align-items: center;
+  background-color: rgba(92, 92, 92, 0.85);
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Federo', sans-serif;
+  height: 60vh;
+  letter-spacing: 2px;
+  width: 35%;
+}
+
+.cocktail-card__img {
+  height: 350px;
+  width: 350px;
 }

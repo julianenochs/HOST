@@ -4,12 +4,23 @@ import { connect } from 'react-redux';
 export class DrinkList extends Component {
   constructor() {
     super();
+    this.state = {
+      
+    }
   }
 
   render() {
+    const { viewCocktail } = this.props
+    console.log('viewCocktail', viewCocktail)
     return(
       <section className='single-cocktail__container'>
-        <p>hi</p>
+        <div className='cocktail-card'>
+          <h2>{viewCocktail.strDrink}</h2>
+          <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} />
+          <h3>Glass Type: {viewCocktail.strGlass}</h3>
+          <p>How To: {viewCocktail.strInstructions}</p>
+          <button>Back To Cocktails</button>
+        </div>
       </section>
     )
   }

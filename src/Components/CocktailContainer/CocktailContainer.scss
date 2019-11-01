@@ -3,23 +3,45 @@
   background-size: cover;
   display: flex;
   flex-wrap: wrap;
+  font-family: 'Federo', sans-serif;
+  font-size: 1.3em;
   height: 85vh;
   opacity: 0.8;
   width: 85%;
 }
 
+.cocktail-name {
+  font-size: 1.3em;
+  height: 5vh;
+  margin-left: -40px;
+}
+
 .cocktail__element {
-  background-color: rgba(92, 92, 92, 0.66);
+  align-items: center;
+  background-color: rgba(92, 92, 92, 0.85);
   border-radius: 5px;
   color: white;
   display: flex;
   flex-direction: column;
+  height: 45%;
   margin: 1%;
   text-align: center;
-  height: 40%;
+  width: 14%;
 }
 
 .cocktail__img {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
+}
+
+.view-cocktail__button {
+  background-color:  rgba(92, 92, 92, 0);
+  border: none;
+  color: white;
+  font-family: 'Federo', sans-serif;
+  font-size: 1em;
+  margin-top: 15%;
+    &:hover {
+        text-shadow: 1px 1px 1px;
+    }
 }

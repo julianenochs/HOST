@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './DrinkList.scss';
+import { connect } from 'react-redux';
+export class DrinkList extends Component {
+  constructor() {
+    super();
+  }
 
-const DrinkList = (props) => {
-  console.log('props', props.viewCocktail)
-  const { viewCocktail } = props
-  let cocktail = Object.keys(viewCocktail)
-  console.log('cocktail', cocktail)
-  return(
-    <div className='single-cocktail__container'>
-      <h2>{viewCocktail.strDrink}</h2>
-      <img className='cocktail__img' src={viewCocktail.strDrinkThumb}></img>
-      <p>{viewCocktail.strGlass}</p>
-    </div>
-  )
+  render() {
+    return(
+      <section className='single-cocktail__container'>
+        <p>hi</p>
+      </section>
+    )
+  }
 }
 
-export default DrinkList;
+const mapStateToProps = state => ({
+  currentCocktail: state.currentCocktail
+})
+
+export default connect(mapStateToProps)(DrinkList);

@@ -1,3 +1,11 @@
+$primary-color: #e0c9b1;
+
 .party__list {
+  background-color: $primary-color;
+  border: none;
+  font-family: 'Federo', sans-serif;
   font-size: 2em;
+    &:hover {
+      text-shadow: 1px 1px 1px;
+  }
 }

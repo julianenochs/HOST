@@ -7,28 +7,32 @@ import CocktailContainer from '../../Components/CocktailContainer/CocktailContai
 import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
 import DrinkList from '../../Components/DrinkList/DrinkList';
+import { selectCocktail } from '../../Actions'
+import CocktailSearch from '../../Containers/CocktailSearch/CocktailSearch';
+
 export class App extends Component {
   constructor() {
     super();
     this.state = {
       parties: [{name: ''}],
       isDrinkSelected: false,
-      currentCocktail: null
+      currentCocktail: {}
     }
   }
 
   setCurrentCocktail = cocktail => {
     this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
+    this.props.selectedCocktail(this.state.currentCocktail.id)
   }
 
   viewCocktail = () => {
-    return this.state.currentCocktail
   }
 
   render() {
     return (
       <div className='App'>
         <Header />
+        {/* <CocktailSearch /> */}
         <section className='main__section'>
           <Menu />
             <BrowserRouter>
@@ -63,4 +67,8 @@ const mapStateToProps = state => ({
   currentCocktail: state.currentCocktail
 })
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  selectedCocktail: (cocktailId) => dispatch(selectCocktail(cocktailId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

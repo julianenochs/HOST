@@ -1,18 +1,16 @@
 import React from 'react';
 import './CocktailContainer.scss';
-import CocktailSearch from '../../Containers/CocktailSearch/CocktailSearch';
 import { connect } from 'react-redux';
 
 const CocktailContainer = (props) => {
   return (<div className='cocktail__container'>
   {props.cocktailsByName.map((cocktail, i) => {
-    return <div>
+    return <div className='cocktail__element'>
       <ul key={i}>{cocktail.strDrink}</ul>
       <img className='cocktail__img'src={`${cocktail.strDrinkThumb}`}></img>
       <button onClick={() => props.setCurrentCocktail(cocktail)}> View Cocktail </button>
       </div>
   })}
-    <CocktailSearch />
     </div>)
 }
 

@@ -12,3 +12,8 @@ export const selectParty = partyId => ({
   type: 'SELECT_PARTY',
   partyId
 });
+
+export const selectCocktail = cocktailId => ({
+  type: 'SELECT_COCKTAIL',
+  cocktailId
+});

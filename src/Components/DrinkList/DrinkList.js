@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './DrinkList.scss';
+import { connect } from 'react-redux';
+export class DrinkList extends Component {
+  constructor() {
+    super();
+  }
 
-const DrinkList = (props) => {
-  console.log('drink props', props)
+  render() {
+    return(
+      <section className='single-cocktail__container'>
+        <p>hi</p>
+      </section>
+    )
+  }
 }
 
-export default DrinkList;
+const mapStateToProps = state => ({
+  currentCocktail: state.currentCocktail
+})
+
+export default connect(mapStateToProps)(DrinkList);

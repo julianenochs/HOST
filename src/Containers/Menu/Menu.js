@@ -37,12 +37,12 @@ export class Menu extends Component {
     return(
       <aside className='menu__section'>
         <section className='menu__contents'>
-          <button onClick={this.showAddPartyInput} className='add-party__button'> Add A Party </button>
+          <option onClick={this.showAddPartyInput} className='start-party__button'> Start A Party </option>
           {this.state.isInputVisible ? 
-          <div> <input type='text' name='partyName' value={this.state.partyName} onChange={this.handleChange}/> 
+          <div> <input type='text' name='partyName' value={this.state.partyName} onChange={this.handleChange} className='input'/> 
           <button onClick={this.handleAddParty}> + </button> 
           </div>: ''}
-          {this.state.hasParties ? <h2 className='parties__header'>Your Parties</h2> : ''}
+          {this.state.hasParties ? <h2 className='parties__header'>Your Parties<hr></hr></h2> : ''}
           {this.state.hasParties ? <PartyList setCurrentParty={this.setCurrentParty} key={Date.now()} /> : ''}
         </section>
       </aside>

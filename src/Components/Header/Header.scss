@@ -1,11 +1,13 @@
 .header {
-  border-bottom: 2px solid black;
+  align-items: center;
+  border-bottom: 1px solid black;
   display: flex;
-  flex-direction: column;
-  height: 20%;
+  flex-direction: row;
+  height: 15vh;
+  justify-content: space-between;
+  text-shadow: 1px 1px 1px;
   width: 100%;
 }
-
 
 .header__text {
   font-family: 'Federo', sans-serif;

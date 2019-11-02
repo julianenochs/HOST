@@ -28,10 +28,14 @@ export class App extends Component {
     return this.state.currentCocktail
   }
 
+  resetHome = () => {
+    this.setState({isDrinkSelected : false })
+  }
+
   render() {
     return (
       <div className='App'>
-        <Header />
+        <Header resetHome={this.resetHome}/>
         <section className='main__section'>
           <Menu />
               {!this.state.isDrinkSelected ? <Route

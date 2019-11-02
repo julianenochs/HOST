@@ -21,7 +21,7 @@ export class App extends Component {
 
   setCurrentCocktail = cocktail => {
     this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
-    this.props.selectedCocktail(this.state.currentCocktail.id)
+    this.props.selectedCocktail(this.state.currentCocktail.idDrink)
   }
 
   viewCocktail = () => {
@@ -35,7 +35,7 @@ export class App extends Component {
         <section className='main__section'>
           <Menu />
               {!this.state.isDrinkSelected ? <Route
-                path='/'
+                path={`/drinks`}
                 render={props => 
                   <CocktailContainer {...props}
                     setCurrentCocktail={this.setCurrentCocktail}/>
@@ -43,7 +43,7 @@ export class App extends Component {
               </Route> : ''}
               {this.state.isDrinkSelected ? 
                 <Route
-                  exact path='/'
+                  exact path={`/drinks/${this.state.currentCocktail.idDrink}`}
                   render={props => (
                     <DrinkList {...props} key={this.state.currentCocktail.idDrink} viewCocktail={this.viewCocktail()}/>
                   )}></Route> : ''}

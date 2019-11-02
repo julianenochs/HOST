@@ -11,15 +11,22 @@ export class DrinkList extends Component {
   }
 
   render() {
-    const { viewCocktail } = this.props
-    console.log('viewCocktail', viewCocktail)
+    const { viewCocktail, parties } = this.props
+    console.log('parties', parties)
     return(
       <section className='single-cocktail__container'>
         <div className='cocktail-card'>
           <h2>{viewCocktail.strDrink}</h2>
-          <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} />
+          <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} alt={`${viewCocktail.strDrink}`}/>
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
+          <select>
+            <option>Save To Party:</option>
+            {parties.map(party => {
+              console.log(party)
+              return <option>{`${party.name}`}</option>
+            })}
+          </select>
           <Route path={`/${viewCocktail.idDrink}`}>
             <div>Back To Cocktails</div>
           </Route>
@@ -30,7 +37,8 @@ export class DrinkList extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentCocktail: state.currentCocktail
+  currentCocktail: state.currentCocktail,
+  parties: state.parties
 })
 
 export default connect(mapStateToProps)(DrinkList);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { searchCocktailsByName } from '../../apiCalls';
 import { cocktailsByName } from '../../Actions/index';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './CocktailSearch.scss';
 export class CocktailSearch extends Component {
   constructor() {
@@ -18,9 +19,9 @@ export class CocktailSearch extends Component {
   handleSearch = () => {
     let cocktailQuery = this.state.selectedCocktail
     searchCocktailsByName(cocktailQuery)
-      .then(data => {
-        this.props.cocktailsByName(data)
-      })
+    .then(data => {
+      this.props.cocktailsByName(data)
+    })
   }
 
   render(){
@@ -34,7 +35,9 @@ export class CocktailSearch extends Component {
           value={this.state.selectedCocktail}
           onChange={this.handleChange}
           />
-          <button className='search-cocktail__button' onClick={this.handleSearch}> Search </button>
+          <Link to='/drinks'>
+            <button className='search-cocktail__button' onClick={this.handleSearch}> Search </button>
+          </Link>
         </section>
     )
   }
@@ -45,7 +48,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  cocktailsByName: state.cocktailsByName
+  cocktailsByName: state.cocktailsByName,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CocktailSearch);

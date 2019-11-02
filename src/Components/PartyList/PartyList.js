@@ -6,7 +6,7 @@ import './PartyList.scss';
 export const PartyList = (props) => {
   return props.parties.map(party => {
       return(<ul>
-        <img className='icon' src='https://image.flaticon.com/icons/svg/766/766044.svg'/>
+        <img className='icon' src='https://image.flaticon.com/icons/svg/766/766044.svg' alt='cocktail glass icon'/>
         <button className='party__list'
             onClick={() => {
               props.selectParty(party.id)

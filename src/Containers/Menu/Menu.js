@@ -30,7 +30,6 @@ export class Menu extends Component {
 
   setCurrentParty = (partyId) => {
     this.setState({ selectedPartyId: partyId })
-    console.log('this.state', this.state)
   }
 
   render() {

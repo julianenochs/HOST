@@ -7,7 +7,6 @@ import CocktailContainer from '../../Components/CocktailContainer/CocktailContai
 import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
 import DrinkList from '../../Components/DrinkList/DrinkList';
-import { selectCocktail, cocktailsByName } from '../../Actions'
 
 export class App extends Component {
   constructor() {
@@ -44,17 +43,21 @@ export class App extends Component {
               <Route
                 exact path={`/drinks/${this.props.selectedCocktail.idDrink}`}
                 render={props => (
-                  <DrinkList {...props} key={this.props.selectedCocktail.idDrink} viewCocktail={this.viewCocktail()}/>
+                  <DrinkList {...props} key={this.props.selectedCocktail.idDrink} viewCocktail={this.viewCocktail()} fromParty={false}/>
                 )}
                 >
                 </Route> : ""
               }
-              <Route
-                path='/parties'
-                render={props => (
-                  <PartyContainer />
-                  )}>
-              </Route>
+              {this.props.parties.list.map(party => {
+                return (
+                  <Route
+                    path={`/party/${party.id}`}
+                    render={props => (
+                      <PartyContainer cocktails={party.cocktails} />
+                    )}>
+                  </Route>
+                );
+              })}
           </section>
       </div>
   );

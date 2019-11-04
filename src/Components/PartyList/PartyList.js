@@ -1,18 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectParty } from '../../Actions/index';
+import { Link } from 'react-router-dom';
 import './PartyList.scss';
 
 export const PartyList = (props) => {
-  console.log('party list props', props.parties.list)
   return props.parties.list.map(party => {
-    return(<ul>
-        <button className='party__list'
+    return(
+      <ul>
+        <Link to={`/party/${party.id}`}>
+          <button
+            className='party__list'
             onClick={() => {
               props.selectParty(party.id)
               props.setCurrentParty(party.id)
-            }}>{party.name}</button>
-            </ul>
+            }}
+          >
+            {party.name}
+          </button>
+        </Link>
+      </ul>
       )
     })
   }

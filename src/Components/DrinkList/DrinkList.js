@@ -13,8 +13,8 @@ export class DrinkList extends Component {
 
   handleChange = (e) => {
     e.stopPropagation();
-    this.setState({selectedParty: e.target.value});
-    console.log('drink list state', this.state)
+    let value = e.target.value
+    this.setState({selectedParty: value});
   }
 
   handleSubmit = () => {
@@ -22,7 +22,7 @@ export class DrinkList extends Component {
   }
 
   render() {
-    const { viewCocktail, parties } = this.props
+    const { viewCocktail, parties, fromParty } = this.props
     return(
       <section className='single-cocktail__container'>
         <div className='cocktail-card'>
@@ -30,7 +30,10 @@ export class DrinkList extends Component {
           <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} alt={`${viewCocktail.strDrink}`}/>
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
-          {parties.list.length ?
+          {fromParty ?
+          <button>delete</button>
+          :
+            parties.list.length ?
           <div>
             <h3>
               Save To Party:

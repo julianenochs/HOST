@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './DrinkList.scss';
 import { connect } from 'react-redux';
 import { togglePartyInput, saveCocktailToParty, deleteCocktail } from '../../Actions/index';
-import { Link } from 'react-router-dom';
-import Popup from "reactjs-popup";
-import { thisExpression } from '@babel/types';
+
 export class DrinkList extends Component {
   constructor(props) {
     super(props);

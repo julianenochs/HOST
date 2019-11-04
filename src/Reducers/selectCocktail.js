@@ -1,7 +1,7 @@
-export const selectCocktail = (state = [], action) => {
+export const selectCocktail = (state = {}, action) => {
   switch (action.type) {
     case 'SELECT_COCKTAIL' :
-      return [...state, action.currentCocktail]
+      return action.cocktail
     default :
       return state;
   } 

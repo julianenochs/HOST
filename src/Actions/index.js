@@ -13,9 +13,9 @@ export const selectParty = partyId => ({
   partyId
 });
 
-export const selectCocktail = cocktailId => ({
+export const selectCocktail = cocktail => ({
   type: 'SELECT_COCKTAIL',
-  cocktailId
+  cocktail
 });
 
 export const saveCocktailToParty = (cocktailId, partyId) => ({

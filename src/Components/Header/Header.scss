@@ -4,8 +4,13 @@
   display: flex;
   flex-direction: row;
   height: 15vh;
-  justify-content: space-evenly;
   text-shadow: 1px 1px 1px;
+  width: 100%;
+}
+
+.right-side__header {
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
 }
 

@@ -6,9 +6,10 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './Reducers/index';
+import { initialState } from './Reducers/initialState';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, initialState, composeWithDevTools());
 
 ReactDOM.render(
 <Provider store={store}>

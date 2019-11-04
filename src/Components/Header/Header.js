@@ -7,10 +7,12 @@ const Header = (props) => {
   return(
     <section className='header'>
       <h1 className='header__text'> _HOST </h1>
-      <CocktailSearch />
-      <Link to='/'>
-        <div onClick={() => props.resetHome()}>Home</div>
-      </Link>
+      <div className='right-side__header'>
+        <CocktailSearch />
+        <Link to='/'>
+          <button onClick={() => props.resetHome()}>Home</button>
+        </Link>
+      </div>
     </section>
   )
 }

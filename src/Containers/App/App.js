@@ -7,25 +7,20 @@ import CocktailContainer from '../../Components/CocktailContainer/CocktailContai
 import PartyContainer from '../../Components/PartyContainer/PartyContainer';
 import { connect } from 'react-redux';
 import DrinkList from '../../Components/DrinkList/DrinkList';
-import { selectCocktail } from '../../Actions'
+import { selectCocktail, cocktailsByName } from '../../Actions'
 
 export class App extends Component {
   constructor() {
     super();
-    this.state = {
-      parties: [{name: ''}],
-      isDrinkSelected: false,
-      currentCocktail: {}
-    }
   }
 
   setCurrentCocktail = cocktail => {
-    this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
-    this.props.selectedCocktail(this.state.currentCocktail.idDrink)
+    // this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
+    this.props.selectedCocktail()
   }
 
   viewCocktail = () => {
-    return this.state.currentCocktail
+    return this.props.selectedCocktail
   }
 
   resetHome = () => {
@@ -33,24 +28,28 @@ export class App extends Component {
   }
 
   render() {
+    console.log('props', this.props)
     return (
       <div className='App'>
         <Header resetHome={this.resetHome}/>
         <section className='main__section'>
           <Menu />
-              {!this.state.isDrinkSelected ? <Route
+              <Route
                 path={`/drinks`}
                 render={props => 
-                  <CocktailContainer {...props}
-                    setCurrentCocktail={this.setCurrentCocktail}/>
+                  <CocktailContainer {...props} />
                   }>
-              </Route> : ''}
-              {this.state.isDrinkSelected ? 
-                <Route
-                  exact path={`/drinks/${this.state.currentCocktail.idDrink}`}
-                  render={props => (
-                    <DrinkList {...props} key={this.state.currentCocktail.idDrink} viewCocktail={this.viewCocktail()}/>
-                  )}></Route> : ''}
+              </Route>
+              {
+                this.props.selectedCocktail ?
+              <Route
+                exact path={`/drinks/${this.props.selectedCocktail.idDrink}`}
+                render={props => (
+                  <DrinkList {...props} key={this.props.selectedCocktail.idDrink} viewCocktail={this.viewCocktail()}/>
+                )}
+                >
+                </Route> : ""
+              }
               <Route
                 path='/parties'
                 render={props => (
@@ -65,11 +64,10 @@ export class App extends Component {
 
 const mapStateToProps = state => ({
   parties: state.parties,
-  currentCocktail: state.currentCocktail
+  cocktailsByName: state.cocktailsByName,
+  currentParty: state.currentParty,
+  selectedCocktail: state.selectedCocktail
 })
 
-const mapDispatchToProps = dispatch => ({
-  selectedCocktail: (cocktailId) => dispatch(selectCocktail(cocktailId))
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

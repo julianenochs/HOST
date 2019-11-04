@@ -5,7 +5,7 @@ import './PartyList.scss';
 
 export const PartyList = (props) => {
   return props.parties.map(party => {
-      return(<ul>
+    return(<ul>
         <button className='party__list'
             onClick={() => {
               props.selectParty(party.id)
@@ -14,7 +14,8 @@ export const PartyList = (props) => {
             </ul>
       )
     })
-}
+  }
+  
 
 const mapStateToProps = state => ({
   parties: state.parties,

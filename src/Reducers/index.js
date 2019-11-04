@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { parties } from './parties';
 import { cocktailsByName } from './searchCocktailByName';
-import { selectCocktail } from "./selectCocktail"
+import { selectCocktail } from './selectCocktail'
 import { togglePartyInput } from './togglePartyInput';
 
 export const rootReducer = combineReducers({

@@ -10,7 +10,7 @@ const Header = (props) => {
       <div className='right-side__header'>
         <CocktailSearch />
         <Link to='/'>
-          <button onClick={() => props.resetHome()}>Home</button>
+          <button onClick={() => props.resetHome()} className='home__button' >Home</button>
         </Link>
       </div>
     </section>

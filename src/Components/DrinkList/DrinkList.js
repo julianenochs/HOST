@@ -3,11 +3,14 @@ import './DrinkList.scss';
 import { connect } from 'react-redux';
 import { togglePartyInput, saveCocktailToParty, deleteCocktail } from '../../Actions/index';
 import { Link } from 'react-router-dom';
+import Popup from "reactjs-popup";
+import { thisExpression } from '@babel/types';
 export class DrinkList extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      selectedParty: props.parties.list.id
+      selectedParty: props.parties.list.id,
+      showSubmission: false
     }
   }
 
@@ -17,13 +20,15 @@ export class DrinkList extends Component {
 
   handleChange = (e) => {
     e.stopPropagation();
-    // let value = e.target.value
     this.setState({[e.target.name]: e.target.value});
-    console.log('state', this.state)
   }
 
   handleSubmit = () => {
     this.props.saveCocktailsToParty({selectedParty: this.state.selectedParty, cocktail: this.props.selectedCocktail});
+    this.setState({ showSubmission: true })
+    setTimeout(() => {
+      this.setState({ showSubmission: false })
+    }, 2000)
   }
 
   render() {
@@ -36,7 +41,7 @@ export class DrinkList extends Component {
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
           {fromParty ?
-            <button onClick={() => this.handleDelete(viewCocktail.idDrink)}>delete</button>
+            <button onClick={() => this.handleDelete(viewCocktail.idDrink)}> Remove </button>
           :
             parties.list.length ?
           <div>
@@ -49,6 +54,7 @@ export class DrinkList extends Component {
               })}
             </select>
             <button className='' onClick={this.handleSubmit}> Submit </button>
+            {this.state.showSubmission ? <div id='submitted' >Submitted</div> : ''}
           </div>
             : <button className='add-party__button' onClick={this.props.togglePartyInput}> Start a Party </button>}
         </div>

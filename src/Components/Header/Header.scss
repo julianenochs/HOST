@@ -19,3 +19,13 @@
   font-size: 3.5em;
   margin-left: 2%;
 }
+
+.home__button {
+  border: none;
+  font-family: 'Federo', sans-serif;
+  font-size: 1.5em;
+  margin-right: 20px;
+  &:hover {
+      text-shadow: 1px 1px 1px;
+  }
+}

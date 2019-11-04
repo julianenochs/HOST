@@ -14,7 +14,6 @@ export class App extends Component {
   }
 
   setCurrentCocktail = cocktail => {
-    // this.setState({ isDrinkSelected: true, currentCocktail: cocktail })
     this.props.selectedCocktail()
   }
 
@@ -41,12 +40,12 @@ export class App extends Component {
               {
                 this.props.selectedCocktail ?
               <Route
-                exact path={`/drinks/${this.props.selectedCocktail.idDrink}`}
+                path={`/cocktail/${this.props.selectedCocktail.idDrink}`}
                 render={props => (
                   <DrinkList {...props} key={this.props.selectedCocktail.idDrink} viewCocktail={this.viewCocktail()} fromParty={false}/>
                 )}
                 >
-                </Route> : ""
+                </Route> : ''
               }
               {this.props.parties.list.map(party => {
                 return (

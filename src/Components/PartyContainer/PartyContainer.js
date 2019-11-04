@@ -1,5 +1,5 @@
 import React from 'react';
-import DrinkList from "../DrinkList/DrinkList";
+import DrinkList from '../DrinkList/DrinkList';
 
 const PartyContainer = (props) => {
   const {cocktails} = props;

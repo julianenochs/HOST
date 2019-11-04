@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CocktailContainer } from './CocktailContainer';
+import CocktailContainer from './CocktailContainer';
 
 describe('Cocktail Container', () => {
   let wrapper;
@@ -12,5 +12,5 @@ describe('Cocktail Container', () => {
 
   it.skip('should match the Cocktail Container snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
-})
+  });
+});

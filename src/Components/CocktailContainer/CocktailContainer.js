@@ -1,7 +1,7 @@
 import React from 'react';
 import './CocktailContainer.scss';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { selectCocktail } from '../../Actions/index';
 
 const CocktailContainer = (props) => {
@@ -10,9 +10,9 @@ const CocktailContainer = (props) => {
     return <div className='cocktail__element'>
         <ul className='cocktail-name' key={i}>{cocktail.strDrink}</ul>
         <img className='cocktail__img'src={`${cocktail.strDrinkThumb}`} alt={`${cocktail.strDrink}`}/>
-        <Link to={`/drinks/${cocktail.idDrink}`}>
+        <NavLink to={`/cocktail/${cocktail.idDrink}`}>
           <button className='view-cocktail__button' onClick={() => props.selectCocktail(cocktail)}> View Cocktail </button>
-        </Link>
+        </NavLink>
       </div>
   })}
     </div>)

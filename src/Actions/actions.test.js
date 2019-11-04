@@ -1,61 +1,75 @@
 import * as actions from './index';
 
 describe('actions', () => {
-  let partyName, cocktailNames, partyId, cocktailId
-  beforeEach(() => {
-    partyName = 'Freaky Tiki',
-    cocktailNames = ['Martini', 'Dirty Martini'],
-    partyId = 1234,
-    cocktailId = 5678
-  });
+  let payload;
+  let togglePayload = {}
   it('should have a type of ADD_PARTY', () => {
     const expectedAction = {
       type: 'ADD_PARTY',
-      partyName
+      payload
     }
 
-    const result = actions.addParty(partyName);
+    const result = actions.addParty(payload);
     expect(result).toEqual(expectedAction);
   });
 
   it('should have a type of COCKTAILS_BY_NAME', () => {
     const expectedAction = {
       type: 'COCKTAILS_BY_NAME',
-      cocktailNames
+      payload
     }
 
-    const result = actions.cocktailsByName(cocktailNames);
+    const result = actions.cocktailsByName(payload);
     expect(result).toEqual(expectedAction)
   });
 
   it('should have a type of SELECT_PARTY', () => {
     const expectedAction = {
       type: 'SELECT_PARTY',
-      partyId
+      payload
     }
 
-    const result = actions.selectParty(partyId);
+    const result = actions.selectParty(payload);
     expect(result).toEqual(expectedAction)
   });
 
   it('should have a type of SELECT_COCKTAIL', () => {
     const expectedAction = {
       type: 'SELECT_COCKTAIL',
-      cocktailId
+      payload
     }
 
-    const result = actions.selectCocktail(cocktailId);
+    const result = actions.selectCocktail(payload);
     expect(result).toEqual(expectedAction)
   });
 
   it('should have a type of SAVE_COCKTAIL_TO_PARTY', () => {
     const expectedAction = {
       type: 'SAVE_COCKTAIL_TO_PARTY',
-      cocktailId, 
-      partyId
+      payload
     }
 
-    const result = actions.saveCocktailToParty(cocktailId, partyId);
+    const result = actions.saveCocktailToParty(payload);
+    expect(result).toEqual(expectedAction)
+  });
+
+  it.skip('should have a type of TOGGLE_PARTY_INPUT', () => {
+    const expectedAction = {
+      type: 'TOGGLE_PARTY_INPUT',
+      togglePayload
+    }
+
+    const result = actions.togglePartyInput(togglePayload);
+    expect(result).toEqual(expectedAction)
+  });
+
+  it('should have a type of DELETE_COCKTAIL', () => {
+    const expectedAction = {
+      type: 'DELETE_COCKTAIL',
+      payload
+    }
+
+    const result = actions.deleteCocktail(payload);
     expect(result).toEqual(expectedAction)
   });
 });

@@ -10,7 +10,7 @@
 }
 
 .cocktail-name {
-  font-size: 1.3em;
+  font-size: 1em;
   height: 5vh;
   margin-left: -40px;
 }
@@ -22,10 +22,10 @@
   color: white;
   display: flex;
   flex-direction: column;
-  height: 45%;
+  height: 35%;
   margin: 1%;
   text-align: center;
-  width: 14%;
+  width: 18%;
     &:hover {
     background-color: rgba(92, 92, 92, 1);
   }

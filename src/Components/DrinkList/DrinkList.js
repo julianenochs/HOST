@@ -34,7 +34,7 @@ export class DrinkList extends Component {
     return(
       <section className='single-cocktail__container'>
         <div className='cocktail-card'>
-          <h2>{viewCocktail.strDrink}</h2>
+          <h2 className='cocktail-card-name'>{viewCocktail.strDrink}</h2>
           <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} alt={`${viewCocktail.strDrink}`}/>
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
@@ -47,12 +47,13 @@ export class DrinkList extends Component {
               Save To Party:
             </h3>
               <select name='selectedParty' onChange={this.handleChange} value={this.state.selectedParty}>
+                <option value='select'> Select </option>
               {parties.list.map(party => {
                 return <option value={`${party.id}`}>{`${party.name}`}</option>
               })}
             </select>
             <button className='' onClick={this.handleSubmit}> Submit </button>
-            {this.state.showSubmission ? <div id='submitted' >Submitted</div> : ''}
+            {this.state.showSubmission ? <div id='submitted' > Submitted </div> : ''}
           </div>
             : <button className='add-party__button' onClick={this.props.togglePartyInput}> Start a Party </button>}
         </div>

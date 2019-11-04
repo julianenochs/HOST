@@ -4,7 +4,6 @@ export const parties = (state = {selectedParty: 0, list: []}, action) => {
       return { ...state, list: [...state.list, { id: Date.now(), name: action.payload, cocktails: [] }] }
     case 'SAVE_COCKTAIL_TO_PARTY':
       const partyToUpdate = state.list.filter(party => party.id == action.payload.selectedParty)[0]
-      console.log('partyToUpdate', action.payload.selectedParty)
       partyToUpdate.cocktails.push(action.payload.cocktail);
       return {
         selectedParty: state.selectedParty,

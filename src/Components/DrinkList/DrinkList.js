@@ -6,15 +6,19 @@ import { Link } from 'react-router-dom';
 export class DrinkList extends Component {
   constructor(props) {
     super(props);
-    this.state = {selectedParty: ''}
+    this.state = { 
+      selectedParty: props.parties.list.id
+    }
   }
 
   handleChange = (e) => {
+    e.stopPropagation();
     this.setState({selectedParty: e.target.value});
+    console.log('drink list state', this.state)
   }
 
   handleSubmit = () => {
-    this.props.saveCocktailToParty(this.state.selectedParty);
+    this.props.saveCocktailsToParty({selectedParty: this.state.selectedParty, cocktail: this.props.selectedCocktail});
   }
 
   render() {
@@ -31,9 +35,9 @@ export class DrinkList extends Component {
             <h3>
               Save To Party:
             </h3>
-            <select onChange={this.handleChange}>
+              <select onChange={this.handleChange} value={this.state.selectedParty}>
               {parties.list.map(party => {
-                return <option value={`${party.name}`}>{`${party.name}`}</option>
+                return <option value={`${party.id}`}>{`${party.name}`}</option>
               })}
             </select>
           </div>
@@ -46,14 +50,14 @@ export class DrinkList extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentCocktail: state.currentCocktail,
   parties: state.parties,
-  isPartyInputVisible: state.isPartyInputVisible
+  isPartyInputVisible: state.isPartyInputVisible,
+  selectedCocktail: state.selectedCocktail
 })
 
 const mapDispatchToProps = dispatch => ({
   togglePartyInput: () => dispatch(togglePartyInput()),
-  saveCocktailToParty: (cocktail) => dispatch(saveCocktailToParty(cocktail))
+  saveCocktailsToParty: (cocktail) => dispatch(saveCocktailToParty(cocktail))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DrinkList);

@@ -4,6 +4,7 @@ import { selectParty } from '../../Actions/index';
 import './PartyList.scss';
 
 export const PartyList = (props) => {
+  console.log('party list props', props.parties.list)
   return props.parties.list.map(party => {
     return(<ul>
         <button className='party__list'

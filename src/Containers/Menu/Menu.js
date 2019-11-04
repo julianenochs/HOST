@@ -34,8 +34,6 @@ export class Menu extends Component {
   }
 
   render() {
-    console.log('props', this.props)
-
     return(
       <aside className='menu__section'>
         <section className='menu__contents'>

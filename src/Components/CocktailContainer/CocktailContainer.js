@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { selectCocktail } from '../../Actions/index';
 
 const CocktailContainer = (props) => {
-  console.log(props);
   return (<div className='cocktail__container'>
   {props.cocktailsByName.map((cocktail, i) => {
     return <div className='cocktail__element'>

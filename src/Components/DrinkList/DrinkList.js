@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import './DrinkList.scss';
 import { connect } from 'react-redux';
-import { togglePartyInput } from '../../Actions/index';
+import { togglePartyInput, saveCocktailToParty } from '../../Actions/index';
 import { Link } from 'react-router-dom';
 export class DrinkList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {selectedParty: ''}
+  }
+
+  handleChange = (e) => {
+    this.setState({selectedParty: e.target.value});
+  }
+
+  handleSubmit = () => {
+    this.props.saveCocktailToParty(this.state.selectedParty);
+  }
+
   render() {
     const { viewCocktail, parties } = this.props
     return(
@@ -18,13 +31,14 @@ export class DrinkList extends Component {
             <h3>
               Save To Party:
             </h3>
-            <select>
+            <select onChange={this.handleChange}>
               {parties.list.map(party => {
                 return <option value={`${party.name}`}>{`${party.name}`}</option>
               })}
             </select>
           </div>
             : <button className='add-party__button' onClick={this.props.togglePartyInput}> Start a Party </button>}
+            <button className='' onClick={this.handleSubmit}> Submit </button>
         </div>
       </section>
     )
@@ -38,7 +52,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  togglePartyInput: () => dispatch(togglePartyInput())
+  togglePartyInput: () => dispatch(togglePartyInput()),
+  saveCocktailToParty: (cocktail) => dispatch(saveCocktailToParty(cocktail))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DrinkList);

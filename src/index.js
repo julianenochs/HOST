@@ -9,7 +9,7 @@ import { rootReducer } from './Reducers/index';
 import { initialState } from './Reducers/initialState';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-const store = createStore(rootReducer, initialState, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
 <Provider store={store}>

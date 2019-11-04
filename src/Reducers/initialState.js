@@ -1,6 +1,6 @@
 export const initialState = {
   parties: {
-    selectedParty: {},
+    selectedParty: 0,
     list: []
   },
   selectedCocktail: {},

@@ -1,27 +1,26 @@
-export const addParty = partyName => ({
+export const addParty = payload => ({
   type: 'ADD_PARTY',
-  partyName
+  payload
 });
 
-export const cocktailsByName = cocktailNames => ({
+export const cocktailsByName = payload => ({
   type: 'COCKTAILS_BY_NAME',
-  cocktailNames
+  payload
 });
 
-export const selectParty = partyId => ({
+export const selectParty = payload => ({
   type: 'SELECT_PARTY',
-  partyId
+  payload
 });
 
-export const selectCocktail = cocktail => ({
+export const selectCocktail = payload => ({
   type: 'SELECT_COCKTAIL',
-  cocktail
+  payload
 });
 
-export const saveCocktailToParty = (cocktailId, partyId) => ({
+export const saveCocktailToParty = payload => ({
   type: 'SAVE_COCKTAIL_TO_PARTY',
-  cocktailId,
-  partyId
+  payload
 })
 
 export const togglePartyInput = () => ({

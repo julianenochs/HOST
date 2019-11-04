@@ -4,7 +4,7 @@ import { selectParty } from '../../Actions/index';
 import './PartyList.scss';
 
 export const PartyList = (props) => {
-  return props.parties.map(party => {
+  return props.parties.list.map(party => {
     return(<ul>
         <button className='party__list'
             onClick={() => {

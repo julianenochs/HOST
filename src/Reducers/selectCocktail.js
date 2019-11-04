@@ -1,7 +1,7 @@
 export const selectCocktail = (state = {}, action) => {
   switch (action.type) {
     case 'SELECT_COCKTAIL' :
-      return action.cocktail
+      return action.payload
     default :
       return state;
   } 

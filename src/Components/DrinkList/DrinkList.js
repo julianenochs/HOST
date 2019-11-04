@@ -13,13 +13,13 @@ export class DrinkList extends Component {
           <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} alt={`${viewCocktail.strDrink}`}/>
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
-          {parties.length ?
+          {parties.list.length ?
           <div>
             <h3>
               Save To Party:
             </h3>
             <select>
-              {parties.map(party => {
+              {parties.list.map(party => {
                 return <option value={`${party.name}`}>{`${party.name}`}</option>
               })}
             </select>

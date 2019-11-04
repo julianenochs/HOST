@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './DrinkList.scss';
 import { connect } from 'react-redux';
-import { togglePartyInput, saveCocktailToParty } from '../../Actions/index';
+import { togglePartyInput, saveCocktailToParty, deleteCocktail } from '../../Actions/index';
 import { Link } from 'react-router-dom';
 export class DrinkList extends Component {
   constructor(props) {
@@ -11,10 +11,15 @@ export class DrinkList extends Component {
     }
   }
 
+  handleDelete = (id) => {
+    this.props.deleteCocktail(id)
+  }
+
   handleChange = (e) => {
     e.stopPropagation();
-    let value = e.target.value
-    this.setState({selectedParty: value});
+    // let value = e.target.value
+    this.setState({[e.target.name]: e.target.value});
+    console.log('state', this.state)
   }
 
   handleSubmit = () => {
@@ -31,21 +36,21 @@ export class DrinkList extends Component {
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
           {fromParty ?
-          <button>delete</button>
+            <button onClick={() => this.handleDelete(viewCocktail.idDrink)}>delete</button>
           :
             parties.list.length ?
           <div>
             <h3>
               Save To Party:
             </h3>
-              <select onChange={this.handleChange} value={this.state.selectedParty}>
+              <select name='selectedParty' onChange={this.handleChange} value={this.state.selectedParty}>
               {parties.list.map(party => {
                 return <option value={`${party.id}`}>{`${party.name}`}</option>
               })}
             </select>
+            <button className='' onClick={this.handleSubmit}> Submit </button>
           </div>
             : <button className='add-party__button' onClick={this.props.togglePartyInput}> Start a Party </button>}
-            <button className='' onClick={this.handleSubmit}> Submit </button>
         </div>
       </section>
     )
@@ -60,7 +65,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   togglePartyInput: () => dispatch(togglePartyInput()),
-  saveCocktailsToParty: (cocktail) => dispatch(saveCocktailToParty(cocktail))
+  saveCocktailsToParty: (cocktail) => dispatch(saveCocktailToParty(cocktail)),
+  deleteCocktail: (cocktailId) => dispatch(deleteCocktail(cocktailId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DrinkList);

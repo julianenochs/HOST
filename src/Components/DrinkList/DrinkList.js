@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import './DrinkList.scss';
 import { connect } from 'react-redux';
+import { togglePartyInput } from '../../Actions/index';
 import { Link } from 'react-router-dom';
 export class DrinkList extends Component {
-  constructor() {
-    super();
-    this.state = {
-      favorites: []
-    }
-  }
-
   render() {
     const { viewCocktail, parties } = this.props
     return(
@@ -19,12 +13,18 @@ export class DrinkList extends Component {
           <img className='cocktail-card__img' src={`${viewCocktail.strDrinkThumb}`} alt={`${viewCocktail.strDrink}`}/>
           <h3>Glass Type: {viewCocktail.strGlass}</h3>
           <p>How To: {viewCocktail.strInstructions}</p>
-          {parties.length > 0 ? <select>
-            <option>Save To Party:</option>
-            {parties.map(party => {
-              return <option value={`${party.name}`}>{`${party.name}`}</option>
-            })}
-          </select> : ''}
+          {parties.length ?
+          <div>
+            <h3>
+              Save To Party:
+            </h3>
+            <select>
+              {parties.map(party => {
+                return <option value={`${party.name}`}>{`${party.name}`}</option>
+              })}
+            </select>
+          </div>
+            : <button className='add-party__button' onClick={this.props.togglePartyInput}> Start a Party </button>}
         </div>
       </section>
     )
@@ -33,7 +33,12 @@ export class DrinkList extends Component {
 
 const mapStateToProps = state => ({
   currentCocktail: state.currentCocktail,
-  parties: state.parties
+  parties: state.parties,
+  isPartyInputVisible: state.isPartyInputVisible
 })
 
-export default connect(mapStateToProps)(DrinkList);
+const mapDispatchToProps = dispatch => ({
+  togglePartyInput: () => dispatch(togglePartyInput())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrinkList);

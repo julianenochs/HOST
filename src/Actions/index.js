@@ -23,3 +23,8 @@ export const saveCocktailToParty = (cocktailId, partyId) => ({
   cocktailId,
   partyId
 })
+
+export const togglePartyInput = () => ({
+  type: 'TOGGLE_PARTY_INPUT',
+  payload: {}
+})

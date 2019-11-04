@@ -28,7 +28,6 @@ export class App extends Component {
   }
 
   render() {
-    console.log('props', this.props)
     return (
       <div className='App'>
         <Header resetHome={this.resetHome}/>

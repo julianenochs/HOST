@@ -4,11 +4,12 @@ import { cocktailsByName } from './searchCocktailByName';
 import { selectParty } from './selectParty';
 import { initialState } from "./initialState";
 import { selectCocktail } from "./selectCocktail"
+import { togglePartyInput } from './togglePartyInput';
 
 export const rootReducer = combineReducers({
   parties: addParty,
   cocktailsByName: cocktailsByName,
   selectParty,
   selectedCocktail: selectCocktail,
-  isDrinkSelected: "",
+  isPartyInputVisible: togglePartyInput,  
 }, initialState)
